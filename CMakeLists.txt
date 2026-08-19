@@ -16,10 +16,14 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # 可选：交叉编译时避免 try_run
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
+include(cmake/lvgl_prune_unused.cmake)
+
 add_subdirectory(freetype)
 set(LV_BUILD_DEMOS OFF CACHE BOOL "" FORCE)
 set(LV_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+lvgl_sync_build_options_from_conf("${PROJECT_SOURCE_DIR}/lv_conf.h")
 add_subdirectory(lvgl)
+lvgl_prune_unused_sources(lvgl "${PROJECT_SOURCE_DIR}/lv_conf.h")
 
 target_compile_options(lvgl
         PRIVATE
