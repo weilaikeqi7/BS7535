@@ -13,9 +13,6 @@ set(CMAKE_CXX_EXTENSIONS ON)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-# 可选：交叉编译时避免 try_run
-set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
-
 include(cmake/lvgl_prune_unused.cmake)
 
 add_subdirectory(freetype)
