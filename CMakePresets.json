@@ -1,11 +1,11 @@
 {
-  "version": 7,
+  "version": 3,
   "configurePresets": [
     {
       "name": "aarch64-base",
       "hidden": true,
       "generator": "Ninja",
-      "binaryDir": "${sourceDir}/build-aarch64",
+      "binaryDir": "${sourceDir}/build/${presetName}",
       "toolchainFile": "${sourceDir}/cmake/toolchains/aarch64-v01c01-linux-gnu.cmake",
       "cacheVariables": {
         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",

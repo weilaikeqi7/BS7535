@@ -1,6 +1,5 @@
-cmake_minimum_required(VERSION 3.16)
-
 add_library(ui_app STATIC)
+add_library(bs7535::ui_app ALIAS ui_app)
 
 set(UI_GENERATED_SOURCES
         ${CMAKE_CURRENT_SOURCE_DIR}/ui.c
@@ -114,8 +113,7 @@ target_sources(ui_app
 )
 
 target_include_directories(ui_app
-        PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}
+        PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/components
         ${CMAKE_CURRENT_SOURCE_DIR}/screens
         ${CMAKE_CURRENT_SOURCE_DIR}/user
@@ -124,28 +122,25 @@ target_include_directories(ui_app
         ${CMAKE_CURRENT_SOURCE_DIR}/user/menu
         ${CMAKE_CURRENT_SOURCE_DIR}/user/media
         ${CMAKE_CURRENT_SOURCE_DIR}/user/reticle
+        PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/user
         ${PROJECT_SOURCE_DIR}
-        ${PROJECT_SOURCE_DIR}/lvgl
 )
 
 target_link_libraries(ui_app
         PUBLIC
-        lvgl
-        freetype
+        bs7535::lvgl
+        PRIVATE
         m
-        pthread
-)
-
-target_compile_definitions(ui_app
-        PUBLIC
-        LV_CONF_INCLUDE_SIMPLE=1
+        Threads::Threads
 )
 
 target_compile_options(ui_app
         PRIVATE
-        -Wall
-        -Wextra
-        -Wno-unused
+        $<$<COMPILE_LANG_AND_ID:C,GNU,Clang>:-Wall>
+        $<$<COMPILE_LANG_AND_ID:C,GNU,Clang>:-Wextra>
+        $<$<COMPILE_LANG_AND_ID:C,GNU,Clang>:-Wno-unused>
 )
 
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES

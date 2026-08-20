@@ -91,6 +91,10 @@ function(_lvgl_prune_if_value_not SOURCE_VAR CONF_PATH MACRO EXPECTED_VALUE)
 endfunction()
 
 function(lvgl_sync_build_options_from_conf CONF_PATH)
+    if(NOT EXISTS "${CONF_PATH}")
+        message(FATAL_ERROR "LVGL configuration file not found: ${CONF_PATH}")
+    endif()
+
     foreach(_macro IN ITEMS
             LV_BUILD_DEMOS
             LV_BUILD_EXAMPLES
@@ -113,11 +117,15 @@ function(lvgl_sync_build_options_from_conf CONF_PATH)
 endfunction()
 
 function(lvgl_prune_unused_sources TARGET_NAME CONF_PATH)
-    if(NOT TARGET ${TARGET_NAME})
+    if(NOT TARGET "${TARGET_NAME}")
         message(FATAL_ERROR "Target '${TARGET_NAME}' does not exist")
     endif()
 
-    get_target_property(_sources ${TARGET_NAME} SOURCES)
+    if(NOT EXISTS "${CONF_PATH}")
+        message(FATAL_ERROR "LVGL configuration file not found: ${CONF_PATH}")
+    endif()
+
+    get_target_property(_sources "${TARGET_NAME}" SOURCES)
     if(NOT _sources OR _sources STREQUAL "_sources-NOTFOUND")
         message(WARNING "Target '${TARGET_NAME}' has no sources to prune")
         return()
@@ -332,6 +340,6 @@ function(lvgl_prune_unused_sources TARGET_NAME CONF_PATH)
     list(LENGTH _pruned _after_count)
     math(EXPR _removed_count "${_before_count} - ${_after_count}")
 
-    set_property(TARGET ${TARGET_NAME} PROPERTY SOURCES ${_pruned})
+    set_property(TARGET "${TARGET_NAME}" PROPERTY SOURCES ${_pruned})
     message(STATUS "LVGL: pruned ${_removed_count} disabled source files from target '${TARGET_NAME}' (${_after_count}/${_before_count} kept)")
 endfunction()
