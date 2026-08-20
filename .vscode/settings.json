@@ -6,11 +6,11 @@
   "clangd.arguments": [
     "--background-index",
     "--clang-tidy",
-    "--compile-commands-dir=${workspaceFolder}/build/aarch64-release",
+    "--compile-commands-dir=${workspaceFolder}/build/aarch64",
     "--query-driver=/opt/linux/x86-arm/aarch64-v01c01-linux-gnu-gcc/bin/aarch64-v01c01-linux-gnu-gcc,/opt/linux/x86-arm/aarch64-v01c01-linux-gnu-gcc/bin/aarch64-v01c01-linux-gnu-g++"
   ],
   "cmake.configureOnOpen": true,
   "cmake.preset": "aarch64-release",
-  "cmake.buildDirectory": "${workspaceFolder}/build/aarch64-release",
+  "cmake.buildDirectory": "${workspaceFolder}/build/aarch64",
   "cmake.generator": "Ninja"
 }

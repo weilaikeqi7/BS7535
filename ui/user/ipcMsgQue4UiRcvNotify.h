@@ -185,6 +185,7 @@ typedef struct {
     ROE_U8 colorCount;
     ROE_U8 displaySwitch;
     ROE_U8 rotateSwitch;
+    ROE_U8 lumaAdaptiveAdjustSwitch;
     ROE_U8 ballisticSwitch;
     ROE_U8 currentWeaponIndex;
     ROE_U8 maxDistanceCount;

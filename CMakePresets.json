@@ -5,7 +5,7 @@
       "name": "aarch64-base",
       "hidden": true,
       "generator": "Ninja",
-      "binaryDir": "${sourceDir}/build/${presetName}",
+      "binaryDir": "${sourceDir}/build/aarch64",
       "toolchainFile": "${sourceDir}/cmake/toolchains/aarch64-v01c01-linux-gnu.cmake",
       "cacheVariables": {
         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",

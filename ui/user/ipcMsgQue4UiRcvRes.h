@@ -423,6 +423,7 @@ typedef struct {
     ROE_U8 result;
     ROE_U8 currentShowReticle;
     ROE_U8 currentRotateReticle;
+    ROE_U8 currentBrightnessBall;
     ROE_U8 currentBallisticSolve;
 } RspSetReticleCommonConfig_st;
 

@@ -336,6 +336,7 @@ typedef struct {
     ROE_U8 saveFlag; // 0不保存 1保存
     ROE_S8 showReticle; // -1不修改 0关 1开
     ROE_S8 rotateReticle; // -1不修改 0关 1开
+    ROE_S8 brightnessBall; // -1不修改 0关 1开
     ROE_S8 ballisticSolve; // -1不修改 0关 1开
 } ReqSetReticleCommonConfig_st;
 

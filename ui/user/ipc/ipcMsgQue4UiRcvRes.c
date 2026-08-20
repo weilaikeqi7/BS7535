@@ -42,6 +42,8 @@ ROE_S32 ParseResMsg(ROE_SL msgType, RoeIpcMsgQueRawData_st * rawData)
         return handleParseWeaponSetReticleStyleMsg(msgData);
     case MSG_4_REQ_RES_WEAPON_SET_RETICLE_COLOR:
         return handleParseWeaponSetReticleColorMsg(msgData);
+    case MSG_4_REQ_RES_WEAPON_SET_RETICLE_LUMA:
+        return ROE_SUCCESS;
     case MSG_4_REQ_RES_WEAPON_SAVE_CONFIG:
         return handleParseWeaponSaveConfigMsg(msgData);
     case MSG_4_REQ_RES_WEAPON_OPERATE_MARK_CONFIG:
